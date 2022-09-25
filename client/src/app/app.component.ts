@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'The Dating App';
-  users: any;
+  Users: any;
   constructor(private http:HttpClient){
 
   }
@@ -18,11 +18,17 @@ export class AppComponent implements OnInit {
     
     this.getUsers;
   }
-  getUsers(){
-    this.http.get('https://localhost:5004/apiii/users').subscribe(Response=>{
-      this.users = Response;
-    }, error=>{
-      console.log(error);
+  // getUsers(){
+  //   this.http.get('https://localhost:5004/apiii/users').subscribe(Response=>{
+  //     this.Users = Response;
+  //   }, error=>{
+  //     console.log(error);
+  //   })
+  // }
+  getUsers() {
+    this.http.get('https://localhost:5004/apiii/users').subscribe({
+      next: response => this.Users = response,
+      error: error => console.log(error)
     })
   }
 }
