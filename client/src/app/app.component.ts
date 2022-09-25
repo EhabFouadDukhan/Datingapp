@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+// import { error } from 'console';
 
 
 @Component({
@@ -7,17 +8,27 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit  {
+  
   title = 'The Dating App';
-  Users: any;
-  constructor(private http:HttpClient){
-
-  }
-
+  users: any;
+  constructor(private http:HttpClient){}
   ngOnInit() {
-    
-    this.getUsers;
+    this.http.get('https://localhost:5004/apiii/users').subscribe(Response =>{
+      this.users = Response;
+    },error=>{
+      console.log(error);
+    })
   }
+  // Users: any;
+  // constructor(private http:HttpClient){
+
+  // }
+
+  // ngOnInit() {
+    
+  //   this.getUsers;
+  // }
   // getUsers(){
   //   this.http.get('https://localhost:5004/apiii/users').subscribe(Response=>{
   //     this.Users = Response;
@@ -25,10 +36,10 @@ export class AppComponent implements OnInit {
   //     console.log(error);
   //   })
   // }
-  getUsers() {
-    this.http.get('https://localhost:5004/apiii/users').subscribe({
-      next: response => this.Users = response,
-      error: error => console.log(error)
-    })
-  }
+  // getUsers() {
+  //   this.http.get('https://localhost:5004/apiii/users').subscribe({
+  //     next: response => this.Users = response,
+  //     error: error => console.log(error)
+  //   })
+  // }
 }
