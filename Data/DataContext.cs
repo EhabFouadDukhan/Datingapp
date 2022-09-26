@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIII.Entities;
+using APIIII.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIII.Data
+namespace APIIII.Data
 {
     public class DataContext : DbContext
     {

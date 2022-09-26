@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using APIII.Data;
-using APIII.Entities;
+using APIIII.Data;
+using APIIII.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace APIII.Controllers
+namespace APIIII.Controllers
 {
     [ApiController]
-    [Route("apiii/[controller]")]
+    [Route("apiiii/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly DataContext _context;

@@ -11,10 +11,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using APIII.Data;
-using Microsoft.EntityFrameworkCore;
 
-namespace APIII
+using Microsoft.EntityFrameworkCore;
+using APIIII.Data;
+
+namespace APIIII
 {
     public class Startup
     {
