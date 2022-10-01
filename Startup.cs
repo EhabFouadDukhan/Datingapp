@@ -14,6 +14,12 @@ using Microsoft.OpenApi.Models;
 
 using Microsoft.EntityFrameworkCore;
 using APIIII.Data;
+using APIIII.Services;
+using APIIII.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using APIIII.Extensions;
 
 namespace APIIII
 {
@@ -27,21 +33,19 @@ namespace APIIII
             
         }
 
-        public IConfiguration Configuration { get; }
+        // public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(option =>
-            {
-                option.UseSqlite(_config.GetConnectionString("DefaultConnection"));
-            });
+            services.AddApplicationServices(_config);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
             });
             services.AddCors();
+            services.AddIdentityService(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +63,8 @@ namespace APIIII
             app.UseRouting();
             
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+            
+            app.UseAuthorization();
 
             app.UseAuthorization();
 
