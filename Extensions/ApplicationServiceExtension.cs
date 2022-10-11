@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APIIII.Data;
+using APIIII.Helpers;
 using APIIII.Interfaces;
 using APIIII.Services;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIIII.Extensions
@@ -15,6 +17,8 @@ namespace APIIII.Extensions
         IConfiguration config)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+            services.AddScoped<IUserRepository,UserRepository>();
             services.AddDbContext<DataContext>(option =>
             {
                 option.UseSqlite(config.GetConnectionString("DefaultConnection"));
