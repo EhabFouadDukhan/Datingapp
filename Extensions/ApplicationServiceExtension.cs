@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIIII.Data;
-using APIIII.Helpers;
-using APIIII.Interfaces;
-using APIIII.Services;
+using API.Data;
+using API.Helpers;
+using API.Interfaces;
+using API.Services;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIIII.Extensions
+namespace API.Extensions
 {
     public static class ApplicationServiceExtension
     {

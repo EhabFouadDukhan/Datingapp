@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace APIIII.Controllers
+namespace API.Controllers
 {
     [ApiController]
-    [Route("apiiii/[controller]")]
+    [Route("api/[controller]")]
     public class BaseApiController : ControllerBase
     {
     }

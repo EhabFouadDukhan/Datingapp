@@ -5,12 +5,12 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using APIIII.Entities;
-using APIIII.Interfaces;
+using API.Entities;
+using API.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-namespace APIIII.Services
+namespace API.Services
 {
     public class TokenService : ITokenService
     {

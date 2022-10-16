@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIIII.DTOs;
-using APIIII.Entities;
-using APIIII.Extensions;
+using API.DTOs;
+using API.Entities;
+using API.Extensions;
 using AutoMapper;
 
-namespace APIIII.Helpers
+namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
@@ -19,6 +19,7 @@ namespace APIIII.Helpers
              .ForMember(dest => dest.Age, opt => opt.MapFrom(src =>
               src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotoDto>();
+            CreateMap<MemberUpdateDto,AppUser>();
         }
     }
 }

@@ -1,9 +1,9 @@
 
 using System.Net;
 using System.Text.Json;
-using APIIII.Errors;
+using API.Errors;
 
-namespace APIIII.Middleware
+namespace API.Middleware
 {
     public class ExceptionMiddleware
     {

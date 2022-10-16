@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace APIIII.Data.Migrations
+namespace API.Data.Migrations
 {
     public partial class UserpasswordAdded : Migration
     {

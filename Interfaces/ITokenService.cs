@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIIII.Entities;
+using API.Entities;
 
-namespace APIIII.Interfaces
+namespace API.Interfaces
 {
     public interface ITokenService
     {

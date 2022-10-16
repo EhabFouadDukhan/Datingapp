@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIIII.DTOs;
-using APIIII.Entities;
+using API.DTOs;
+using API.Entities;
 
-namespace APIIII.Interfaces
+namespace API.Interfaces
 {
     public interface IUserRepository
     {

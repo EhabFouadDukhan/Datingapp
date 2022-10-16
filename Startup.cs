@@ -13,16 +13,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 using Microsoft.EntityFrameworkCore;
-using APIIII.Data;
-using APIIII.Services;
-using APIIII.Interfaces;
+using API.Data;
+using API.Services;
+using API.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using APIIII.Extensions;
-using APIIII.Middleware;
+using API.Extensions;
+using API.Middleware;
 
-namespace APIIII
+namespace API
 {
     public class Startup
     {

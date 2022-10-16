@@ -2,18 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using APIIII.Data;
-using APIIII.DTOs;
-using APIIII.Entities;
-using APIIII.Interfaces;
+using API.Controllers;
+using API.Data;
+using API.DTOs;
+using API.Entities;
+using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace APIIII.Controllers
+namespace API.Controllers
 {
     // [Authorize]
     public class UsersController : BaseApiController
@@ -39,6 +41,18 @@ namespace APIIII.Controllers
             return await _userRepository.GetMemberAsync(username);
             
         
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto){
+             var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+             var usre = await _userRepository.GetUserByUsernameAsync(username);
+
+             _mapper.Map(memberUpdateDto,usre);
+             _userRepository.Update(usre);
+             if(await _userRepository.SaveAllAsync())return NoContent();
+
+             return BadRequest("Failed to update user");
         }
         
 

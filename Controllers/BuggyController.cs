@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIIII.Data;
-using APIIII.Entities;
+using API.Data;
+using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIIII.Controllers
+namespace API.Controllers
 {
     public class BuggyController : BaseApiController
     {
