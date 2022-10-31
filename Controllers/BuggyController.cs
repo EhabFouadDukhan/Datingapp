@@ -44,7 +44,7 @@ namespace API.Controllers
         
         [HttpGet("bed-request")]
         public ActionResult<string> gerBedRequest(){
-            return BadRequest("this was not a good request");
+            return BadRequest();
         }
 
     }
