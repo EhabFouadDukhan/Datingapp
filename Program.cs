@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using API;
 using API.Data;
+using API.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -22,8 +24,10 @@ namespace API
           try
           {
                var context = Services.GetRequiredService<DataContext>();
+               var userManager = Services.GetRequiredService<UserManager<AppUser>>();
+               var roleManager = Services.GetRequiredService<RoleManager<AppRole>>();
                await context.Database.MigrateAsync();
-               await Seed.SeedUser(context);
+               await Seed.SeedUser(userManager,roleManager);
           }
           catch(Exception ex)
           {
@@ -33,6 +37,7 @@ namespace API
 
           await host.RunAsync();
         }
+    
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

@@ -38,7 +38,7 @@ namespace API.Controllers
             _photoService = PhotoService;
             _userRepository = userRepository;
         }
-        
+        // [Authorize (Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams){
             // var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
@@ -55,7 +55,7 @@ namespace API.Controllers
            return Ok(users);
         
         }
-        
+        // [Authorize (Roles = "Member")]
         [HttpGet("{username}", Name ="GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username){
             return await _userRepository.GetMemberAsync(username);
@@ -133,29 +133,22 @@ namespace API.Controllers
         }
 
 
-        [HttpGet("Login2")]
-        public async Task<ActionResult<UserDto>> Login2()
-        {
+        // [HttpGet("Login2")]
+        // public async Task<ActionResult<UserDto>> Login2()
+        // {
 
-            var user = await _context.Users
-            .Include(p => p.Photos)
-            .SingleOrDefaultAsync(x => x.UserName == "ehab");
-            if (user == null) return Unauthorized("invalid Username");
-            using var hmac = new HMACSHA512(user.PasswordSalt);
-            var ComputeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Ehabehab"));
-            for (int i = 0; i < ComputeHash.Length; i++)
-            {
-                if (ComputeHash[i] != user.PasswordHash[i])
-                    return Unauthorized("Invalid Password");
-            }
-            return new UserDto
-            {
-                Username = user.UserName,
-                Token = _tokenService.CreateToken(user),
-                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                KnownAs = user.KnownAs,
-                Gender = user.Gender
-            };
-        }
+        //     var user = await _context.Users
+        //     .Include(p => p.Photos)
+        //     .SingleOrDefaultAsync(x => x.UserName == "ehab");
+        //     if (user == null) return Unauthorized("invalid Username");
+        //     return new UserDto
+        //     {
+        //         Username = user.UserName,
+        //         Token = await _tokenService.CreateToken(user),
+        //         PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
+        //         KnownAs = user.KnownAs,
+        //         Gender = user.Gender
+        //     };
+        // }
     }
 }
